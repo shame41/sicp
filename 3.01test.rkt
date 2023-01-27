@@ -1,0 +1,10 @@
+#lang racket
+(define (make-accumulator num)
+		(define now num)
+		(define (accumulate new_num)
+				(set! num (+ num new_num))
+				num)
+		accumulate)
+(define a (make-accumulator 5))
+(a 10)
+(a 10)

@@ -1,0 +1,16 @@
+#lang racket
+(define (mycons a b) (* (expt 2 a) (expt 3 b)))
+(define (mycar my)
+		(define (iter my cnt)
+				(if (= 0 (remainder my 2))
+					(iter (/ my 2) (+ cnt 1))
+					cnt))
+		(iter my 0))
+(define (mycdr my)
+		(define (iter my cnt)
+				(if (= 0 (remainder my 3))
+					(iter (/ my 3) (+ cnt 1))
+					cnt))
+		(iter my 0))
+
+(mycdr (mycons 5 7))

@@ -1,0 +1,16 @@
+#lang racket
+(define (accumulate combiner null_value func down up)
+		(if (> down up)
+			null_value
+			(combiner (func down)
+					  (accumulate combiner null_value func (+ 1 down) up))))
+(define (sum down up func)
+		(define (combiner x y)
+				(+ x y))
+		(accumulate combiner 0 func down up))
+(define (product down up func)
+		(define (combiner x y)
+				(* x y))
+		(accumulate combiner 1 func down up))
+(define (cube x) (* x x x))
+(sum 2 10 cube)
